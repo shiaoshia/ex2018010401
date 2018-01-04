@@ -2,6 +2,7 @@ package tw.com.shiaoshia.ex2018010401;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -42,10 +43,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //建立LinearLayout
-        LinearLayout layout = new LinearLayout(this);
+        LinearLayout layout = new LinearLayout(this); //預設是橫的顯示
+        layout.setOrientation(LinearLayout.VERTICAL); //VERTICAL設成直的顯示
         layout.addView(bnt);
         layout.addView(bnt2);
         setContentView(layout);
 
+        //顯示螢幕尺寸
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int widht = displayMetrics.widthPixels;
+        Toast.makeText(MainActivity.this,height+","+widht,Toast.LENGTH_SHORT).show();
     }
 }
